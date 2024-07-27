@@ -1,0 +1,140 @@
+ <style>@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap');
+*
+{
+    /* font-family: 'Dancing Script', cursive; */
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+::selection
+{
+    background-color: lightblue;
+    color: #000;
+}
+/* ::-webkit-scrollbar
+{
+    background-color: red;
+    display: none;
+    width: 5px;
+}  
+::-webkit-scrollbar-thumb
+{
+    background-color: blue;
+}  */
+.nav-link:hover
+{
+  background-color: #888;
+}
+.banner
+{
+    width: 100%;
+    height: 88vh;
+    background: url(../../images/banner1.jpg);
+    background-size:cover;
+    position: relative;
+}
+.banner::before
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.5;
+}
+.banner .bannerContent
+{
+    width: 60%;
+    text-align: center;
+    z-index: 2;
+}
+.banner .bannerContent h2                              
+{
+    font-size: 3em;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+}       
+.banner .bannerContent p    
+{
+    font-size: 17px;
+    line-height: 1.5em;
+    color: #fff;
+    text-transform: capitalize;
+}
+.banner .bannerContent button
+{
+    margin-top: 5px;
+    padding: 6px 12px;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.4);    
+    transition-duration: 0.3s;
+}
+.banner .bannerContent button:hover
+{
+    letter-spacing: 3px;
+    color: #000;
+}
+.about h2
+{
+    text-transform: capitalize;
+}
+.about h2 span
+{
+    font-size: 44px;
+}
+.about  p{
+    font-size: 16px;
+    text-align: justify;
+    line-height: 1.6em;
+}
+.about button
+{
+    border: 1px solid rgba(0, 0, 0, 0.792);
+    padding: 6px 12px;
+    background-color: #d2d2d2;
+    text-transform: capitalize;
+}
+.about img
+{
+    width: 100%;
+    margin-top: 30px;
+}
+.mybutton
+{
+    border: 1px solid rgba(0, 0, 0, 0.792);
+    padding: 6px 12px;
+    background-color: #d2d2d2;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #fff;
+}
+footer
+{
+    background-color: #222;
+    padding: 30px 0px;
+}
+
+footer ul
+{
+    padding: 0;
+}
+footer ul li a
+{
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+footer img
+{
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    filter: invert(1);
+}
+</style>
