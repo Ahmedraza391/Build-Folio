@@ -1,11 +1,3 @@
-/**
-* Template Name: iPortfolio
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -71,16 +63,20 @@ h6 {
 --------------------------------------------------------------*/
 #header {
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   bottom: 0;
   width: 20%;
   transition: all ease-in-out 0.5s;
-  z-index: 9997;
+  z-index: 98;
   transition: all 0.5s;
   padding: 0 15px;
   background: #040b14;
   overflow-y: auto;
+}
+
+#header .sidebar_navlink.active{
+  color: #2eafec;
 }
 
 #header .profile img {
@@ -153,6 +149,20 @@ h6 {
   }
 }
 
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+.top-navbar{
+  background-color: #95d7f5 !important;
+  z-index: 99;
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+      position: absolute;
+      right: -30px !important;
+      left: unset !important;
+  }
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -1102,4 +1112,74 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+/*--------------------------------------------------------------
+# My CSS
+--------------------------------------------------------------*/
+.custom-card {
+  border: none;
+  border-radius: 15px;
+  background-color: #95d7f5;
+  color: #fff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-card h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.custom-card div span {
+  font-size: 1.2em;
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.overflow_table{
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+}
+.overflow_table table{
+  width: 100% !important;
+  height: 100%;
+  min-width: max-content;
+}
+
+.lec_table{
+  margin-top: 20px;
+  min-height: 150px !important;
+  /* height: 500px; */
+  overflow-y: auto;
+}
+.lec_table table thead{
+  position: sticky;
+  top: -11px;
+  z-index: 10;
+  width: 100%  !important;
+}
+.btn-primary{
+  background-color: #149ddd !important;
+  color: #fff !important;
+}
+.btn-primary:hover
+{
+  background-color: #37b3ed !important;
+}
+
+.btn-white{
+  background-color: #fff !important;
+  color: #149ddd !important;
+  box-shadow: 2px 0px 5px 1px #149ddd !important;
+  font-weight: bold;
+  transition: .3s;
+}
+.btn-white:hover
+{
+  background-color: #d4f2ff !important;
+  transform: scale(1.1);
 }

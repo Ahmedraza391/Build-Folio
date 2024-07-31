@@ -1,6 +1,8 @@
-<?php include("top.php"); 
+<?php 
+  $page = "user";
 ?>
-
+<title>Build Folio - Users</title>
+<?php include("top.php"); ?>
 <section class="mainRight container">
     <h2>All Users</h2>
     <table class="table table-bordered table-striped mt-2 text-center" >

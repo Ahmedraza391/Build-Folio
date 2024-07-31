@@ -1,4 +1,4 @@
- <style>@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap');
 *
 {
     /* font-family: 'Dancing Script', cursive; */
@@ -11,7 +11,7 @@
     background-color: lightblue;
     color: #000;
 }
-/* ::-webkit-scrollbar
+::-webkit-scrollbar
 {
     background-color: red;
     display: none;
@@ -20,7 +20,7 @@
 ::-webkit-scrollbar-thumb
 {
     background-color: blue;
-}  */
+} 
 .nav-link:hover
 {
   background-color: #888;
@@ -137,4 +137,3 @@ footer img
     margin-right: 15px;
     filter: invert(1);
 }
-</style>
