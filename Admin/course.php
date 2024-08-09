@@ -3,6 +3,11 @@ $page = "course";
 ?>
 <title>Build Folio - Courses</title>
 <?php include("top.php"); ?>
+<?php
+if(!isset($_SESSION['admin'])){
+    echo "<script>window.location.href='admin_login.php'</script>";
+}
+?>
 <section class="mainRight container">
   <h2>Courses</h2>
   <div class="overflow_table">

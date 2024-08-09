@@ -3,6 +3,11 @@ $page = "lecture";
 ?>
 <title>Build Folio - Lectures</title>
 <?php include("top.php"); ?>
+<?php
+if(!isset($_SESSION['admin'])){
+    echo "<script>window.location.href='admin_login.php'</script>";
+}
+?>
 <section class="mainRight container">
   <h2>Lectures</h2>
   <div class="overflow_table lec_table  mb-3">
@@ -66,7 +71,7 @@ $page = "lecture";
 
             <div class="form-floating mb-3">
               <select class="form-select" name="lang_id" id="lang_id" aria-label="Floating label select example">
-                <option hidden selected value="">Select Lecture</option>
+                <option hidden selected value="">Select Techonology</option>
                 <?php
                 $query = mysqli_query($connection, "SELECT * FROM tbl_language");
                 if (mysqli_num_rows($query) > 0) {
@@ -74,11 +79,11 @@ $page = "lecture";
                     echo "<option value='{$lang['lang_id']}'>{$lang['lang_name']}</option>";
                   }
                 } else {
-                  echo "<option selected>Lectures Not Found</option>";
+                  echo "<option selected>Techonologies Not Found</option>";
                 }
                 ?>
               </select>
-              <label for="lang_id">Lectures</label>
+              <label for="lang_id">Techonology</label>
             </div>
             <div class="card p-2 border mb-3">
               <label for="thumbnail" class="form-lable">Video Thumbnail</label>
@@ -90,7 +95,7 @@ $page = "lecture";
 
             </div>
 
-            <input type="submit" name="btnEnter" class="btn btn-secondary my-2" value="Enter">
+            <input type="submit" name="btnEnter" class="btn btn-primary my-2" value="Add Lecture">
           </form>
 
         </div>
@@ -102,7 +107,7 @@ $page = "lecture";
   </div>
   <!-- View Lecture Modal -->
   <div class="modal fade" id="ViewLectureModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ViewLectureModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="ViewLectureModalLabel">View Lecture</h5>
@@ -110,7 +115,7 @@ $page = "lecture";
         </div>
         <div class="modal-body">
           <div class="card p-3">
-            <video src="" poster="" class="w-100" id="view_thumbnail" controls>
+            <video src="" poster="" id="view_thumbnail" height="500px" width="100%" controls>
               <source id="view_video" type="video/mp4">
             </video>
             <hr>
@@ -136,11 +141,11 @@ $page = "lecture";
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <video src="" poster="" class="w-100" id="edit_thumbnail_display" controls>
+          <video src="" poster="" class="w-100" id="edit_thumbnail_display" height="500px" controls>
             <source id="eidt_video_play" type="video/mp4">
           </video>
           <form id="video_thumbnail_form" enctype="multipart/form-data" method="POST">
-          <input type="hidden" name="edit_lec_id_v_t" id="edit_lec_id_v_t">
+            <input type="hidden" name="edit_lec_id_v_t" id="edit_lec_id_v_t">
             <div class="card p-2 border mb-3">
               <label for="edit_thumbnail" class="form-label">Upload Thumbnail</label>
               <input type="file" name="edit_thumbnail" id="edit_thumbnail" class="form-control my-2">

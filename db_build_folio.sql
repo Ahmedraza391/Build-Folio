@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2024 at 01:35 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Aug 09, 2024 at 07:35 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,6 @@ CREATE TABLE `tbl_course` (
 --
 
 INSERT INTO `tbl_course` (`course_id`, `course_name`) VALUES
-(1, 'Full Stack Development'),
 (2, 'Frontend Development'),
 (3, 'Backend Full Course');
 
@@ -78,7 +77,9 @@ CREATE TABLE `tbl_language` (
 --
 
 INSERT INTO `tbl_language` (`lang_id`, `lang_name`, `course_id`) VALUES
-(2, 'Html,CSS,JavaScript,Php,Mysql', 3);
+(2, 'Html,CSS,JavaScript,Php,Mysql', 3),
+(3, 'Html', 0),
+(4, 'Html', 2);
 
 -- --------------------------------------------------------
 
@@ -101,7 +102,8 @@ CREATE TABLE `tbl_lectures` (
 --
 
 INSERT INTO `tbl_lectures` (`id`, `videoPath`, `video_thumbnail`, `title`, `description`, `course_id`, `lang_id`) VALUES
-(1, './videos/WhatsApp Video 2024-03-28 at 21.08.42_ee0af8eb.mp4', './videos/muha-ajjan-sL2BRR1cuvM-unsplash.jpg', 'Introduction To Backend', 'Learn Backend Full in Simplest Way And Make Dynamic Projects.', 3, 2);
+(1, './videos/Jellyfish.mp4', './videos/muha-ajjan-sL2BRR1cuvM-unsplash.jpg', 'Introduction To Backend', 'Learn Backend Full in Simplest Way And Make Dynamic Projects.', 3, 2),
+(3, './videos/Jellyfish.mp4', './videos/ahmed .png', 'Variables In PHP', 'In this ', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -183,13 +185,13 @@ ALTER TABLE `tbl_course`
 -- AUTO_INCREMENT for table `tbl_language`
 --
 ALTER TABLE `tbl_language`
-  MODIFY `lang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `lang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_lectures`
 --
 ALTER TABLE `tbl_lectures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

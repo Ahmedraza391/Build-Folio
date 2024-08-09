@@ -3,6 +3,11 @@ $page = "home";
 ?>
 <title>Build Folio - Home</title>
 <?php include("top.php"); ?>
+<?php
+if(!isset($_SESSION['admin'])){
+    echo "<script>window.location.href='admin_login.php'</script>";
+}
+?>
 <section class="mainRight container">
     <div class="content row gap-1 justify-content-center">
         <div class="card p-3 col-md-3 shadow mb-5 rounded custom-card">

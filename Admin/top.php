@@ -1,7 +1,6 @@
-<?php include("../connection.php");
+<?php 
 session_start();
-// if(!isset($_SESSION['user'])){
-//   
+include("../connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +13,7 @@ session_start();
   <link rel="stylesheet" href="../assets/css/googlefonts.css">
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/bootstrap/css/style.css">
-  <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
-  <!-- <link rel="stylesheet" href="index.css"> -->
+  <link rel="stylesheet" href="../assets/fontawesome-icons/css/all.min.css">
   <?php include("style.php") ?>
 </head>
 

@@ -3,6 +3,11 @@ $page = "language";
 ?>
 <title>Build Folio - Languages</title>
 <?php include("top.php") ?>
+<?php
+if(!isset($_SESSION['admin'])){
+    echo "<script>window.location.href='admin_login.php'</script>";
+}
+?>
 <section class="mainRight container">
   <h2>Technologies</h2>
   <div class="overflow_table">
