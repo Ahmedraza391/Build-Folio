@@ -1,6 +1,10 @@
 <?php
+    include("../connection.php");
+    session_start();
     $page = "about";
+    $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
 ?>
+<title>Build Folio - About</title>
 <?php include("top.php"); ?>  
 <style>
     .header {

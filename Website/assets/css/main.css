@@ -74,7 +74,16 @@ h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
-
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+  border: none !important;
+}
+.btn:focus{
+  border: none !important;
+  outline: none !important;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -1238,16 +1247,16 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Portfolio Section
+# Project Section
 --------------------------------------------------------------*/
-.portfolio .portfolio-filters {
+.projects .projects-filters {
   padding: 0;
   margin: 0 auto 20px auto;
   list-style: none;
   text-align: center;
 }
 
-.portfolio .portfolio-filters li {
+.projects .projects-filters li {
   cursor: pointer;
   display: inline-block;
   padding: 8px 20px 10px 20px;
@@ -1261,33 +1270,37 @@ section,
   font-family: var(--heading-font);
 }
 
-.portfolio .portfolio-filters li:hover,
-.portfolio .portfolio-filters li.filter-active {
+.projects .projects-filters li:hover,
+.projects .projects-filters li.filter-active {
   color: var(--contrast-color);
   background-color: var(--accent-color);
 }
 
-.portfolio .portfolio-filters li:first-child {
+.projects .projects-filters li:first-child {
   margin-left: 0;
 }
 
-.portfolio .portfolio-filters li:last-child {
+.projects .projects-filters li:last-child {
   margin-right: 0;
 }
 
 @media (max-width: 575px) {
-  .portfolio .portfolio-filters li {
+  .projects .projects-filters li {
     font-size: 14px;
     margin: 0 0 10px 0;
   }
 }
 
-.portfolio .portfolio-item {
+.projects .projects-item {
   position: relative;
   overflow: hidden;
+  height: 250px !important;
 }
-
-.portfolio .portfolio-item .portfolio-info {
+.projects .projects-item img{
+  width: 100%;
+  height: 100%;
+}
+.projects .projects-item .projects-info {
   opacity: 0;
   position: absolute;
   left: 12px;
@@ -1299,21 +1312,21 @@ section,
   padding: 15px;
 }
 
-.portfolio .portfolio-item .portfolio-info h4 {
+.projects .projects-item .projects-info h4 {
   font-size: 18px;
   font-weight: 600;
   padding-right: 50px;
 }
 
-.portfolio .portfolio-item .portfolio-info p {
+.projects .projects-item .projects-info p {
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   font-size: 14px;
   margin-bottom: 0;
   padding-right: 50px;
 }
 
-.portfolio .portfolio-item .portfolio-info .preview-link,
-.portfolio .portfolio-item .portfolio-info .details-link {
+.projects .projects-item .projects-info .preview-link,
+.projects .projects-item .projects-info .details-link {
   position: absolute;
   right: 50px;
   font-size: 24px;
@@ -1323,17 +1336,17 @@ section,
   line-height: 0;
 }
 
-.portfolio .portfolio-item .portfolio-info .preview-link:hover,
-.portfolio .portfolio-item .portfolio-info .details-link:hover {
+.projects .projects-item .projects-info .preview-link:hover,
+.projects .projects-item .projects-info .details-link:hover {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-item .portfolio-info .details-link {
+.projects .projects-item .projects-info .details-link {
   right: 14px;
   font-size: 28px;
 }
 
-.portfolio .portfolio-item:hover .portfolio-info {
+.projects .projects-item:hover .projects-info {
   opacity: 1;
   bottom: 0;
 }
@@ -1349,25 +1362,34 @@ section,
   transition: 0.5s;
   padding: 30px;
   height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-@media (max-width: 468px) {
+@media (max-width: 768px) {
   .team .team-member {
     flex-direction: column;
-    justify-content: center !important;
-    align-items: center !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 
 .team .team-member .pic {
   overflow: hidden;
   width: 150px;
+  height: 150px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .team .team-member .pic img {
   transition: ease-in-out 0.3s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .team .team-member:hover {
@@ -1375,15 +1397,17 @@ section,
 }
 
 .team .team-member .member-info {
-  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (max-width: 468px) {
+/* @media (max-width: 768px) {
   .team .team-member .member-info {
-    padding: 30px 0 0 0;
-    text-align: center;
+    padding: 20px 0 0 0;
   }
-}
+} */
 
 .team .team-member h4 {
   font-weight: 700;
@@ -1395,29 +1419,17 @@ section,
   display: block;
   font-size: 15px;
   padding-bottom: 10px;
-  position: relative;
   font-weight: 500;
 }
 
-.team .team-member span::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: color-mix(in srgb, var(--default-color), transparent 85%);
-  bottom: 0;
-  left: 0;
-}
-
-@media (max-width: 468px) {
+@media (max-width: 768px) {
   .team .team-member span::after {
     left: calc(50% - 25px);
   }
 }
 
 .team .team-member p {
-  margin: 10px 0 0 0;
+  margin: 0;
   font-size: 14px;
 }
 
@@ -1425,11 +1437,11 @@ section,
   margin-top: 12px;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   width: 100%;
 }
 
-@media (max-width: 468px) {
+@media (max-width: 768px) {
   .team .team-member .social {
     justify-content: center;
   }
@@ -2033,5 +2045,58 @@ section,
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
+
+.project_section{
+  margin-top: 95px !important;
+}
+.project_detail_section{
+  margin-top: 95px !important;
+
+}
+.text-primary{
+  color: #47b2e4 !important;
+}
+.btn-primary{
+  background-color: #47b2e4 !important;
+  font-weight: bold;
+}
+.btn-primary:hover{
+  background-color: #2689b6 !important;
+}
+
+/* For Register User Section */
+.register_page{
+  width: 100%;
+  height: 100vh;
+  background: url("../img/pencil-eraser-paper-clip-with-blue-card-paper-white-backdrop.jpg") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register_card{
+  min-height: 500px ;
+  border-radius: 20px !important;
+}
+/* For Register User Section */
+/* For Login User Section */
+.login_page{
+  width: 100%;
+  height: 100vh;
+  background: url("../img/fitness-concept-with-blue-jumping-rope.jpg") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login_card{
+  min-height: 450px ;
+  border-radius: 20px !important;
+}
+/* For Login User Section */

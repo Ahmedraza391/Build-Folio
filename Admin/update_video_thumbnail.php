@@ -11,9 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $thumbnailUploaded = false;
     $videoPath = null;
     $thumbnailPath = null;
-    $lectureId = isset($_POST['edit_lec_id_v_t']) ? intval($_POST['edit_lec_id_v_t']) : 0;
+    $lectureId = isset($_POST['edit_lecture_id_t_v']) ? intval($_POST['edit_lecture_id_t_v']) : 0;
     $errorMessage = '';
-
+    $course_id = $_POST['edit_lecture_course'];
+    $fetch_course = mysqli_query($connection, "SELECT * FROM tbl_course WHERE course_id='$course_id'");
+    $fetch = mysqli_fetch_assoc($fetch_course);
+    $coursename = preg_replace('/[^A-Za-z0-9\-]/', '_', $fetch['course_name']);
     // Set maximum video size in MB
     $maxVideoSizeMB = 200; // example: 200MB
     $maxVideoSizeBytes = $maxVideoSizeMB * 1024 * 1024;
@@ -30,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($videoSize > $maxVideoSizeBytes) {
             $errorMessage = "Video file size exceeds the maximum limit of $maxVideoSizeMB MB.";
         } elseif (in_array($ExtensionType, $allowedExt)) {
-            $videoPath = "./videos/$videoName";
+            $videoPath = "./uploads/$coursename/videos/$videoName";
             if (move_uploaded_file($tmpName, $videoPath)) {
                 $videoUploaded = true;
             } else {
@@ -50,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $allowedThumbnailExt = array("image/jpeg", "image/png");
 
         if (in_array($thumbnailType, $allowedThumbnailExt)) {
-            $thumbnailPath = "./videos/$thumbnailName";
+            $thumbnailPath = "./uploads/$coursename/thumbnails/$thumbnailName";
             if (move_uploaded_file($tmpName, $thumbnailPath)) {
                 $thumbnailUploaded = true;
             } else {
@@ -67,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         // Update database
         if ($videoUploaded && $thumbnailUploaded) {
-            $query = "UPDATE tbl_lectures SET videoPath = ?, video_thumbnail = ? WHERE id = ?";
+            $query = "UPDATE tbl_lectures SET video = ?, video_thumbnail = ? WHERE id = ?";
             $stmt = $connection->prepare($query);
             $stmt->bind_param("ssi", $videoPath, $thumbnailPath, $lectureId);
             if ($stmt->execute()) {
@@ -77,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             $stmt->close();
         } elseif ($videoUploaded) {
-            $query = "UPDATE tbl_lectures SET videoPath = ? WHERE id = ?";
+            $query = "UPDATE tbl_lectures SET video = ? WHERE id = ?";
             $stmt = $connection->prepare($query);
             $stmt->bind_param("si", $videoPath, $lectureId);
             if ($stmt->execute()) {

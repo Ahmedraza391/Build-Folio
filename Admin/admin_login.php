@@ -14,8 +14,6 @@ include("../connection.php");
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <!-- <link rel="stylesheet" href="index.css"> -->
-    <?php include("style.php") ?>
 </head>
 
 <body>
@@ -34,9 +32,7 @@ include("../connection.php");
                                 <div class="col-12">
                                     <label for="youremail" class="form-label">Email</label>
                                     <div class="input-group has-validation">
-                                        <input type="email" name="txtemail" value="<?php if (isset($_COOKIE['email'])) {
-                                                                                            echo htmlspecialchars($_COOKIE['email']);
-                                                                                        } ?>" class="form-control" id="youremail" required>
+                                        <input type="email" name="txtemail" value="<?php if (isset($_COOKIE['email'])) {echo htmlspecialchars($_COOKIE['email']);} ?>" class="form-control" id="youremail" required>
                                         <div class="invalid-feedback">Please enter your username.</div>
                                     </div>
                                 </div>
@@ -54,14 +50,7 @@ include("../connection.php");
                                 </div>
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember_me" id="rememberMe" <?php
-                                                                                                                            if (
-                                                                                                                                isset($_COOKIE['email']) && $_COOKIE['email'] !== '' &&
-                                                                                                                                isset($_COOKIE['password']) && $_COOKIE['password'] !== ''
-                                                                                                                            ) {
-                                                                                                                                echo 'checked';
-                                                                                                                            }
-                                                                                                                            ?>>
+                                        <input class="form-check-input" type="checkbox" name="remember_me" id="rememberMe" <?php if (isset($_COOKIE['email']) && $_COOKIE['email'] !== '' &&isset($_COOKIE['password']) && $_COOKIE['password'] !== '') {echo 'checked';}?>>
                                         <label class="form-check-label" for="rememberMe">Remember me</label>
                                     </div>
                                 </div>
@@ -84,13 +73,13 @@ include("../connection.php");
 
                                     // Check password (plain text comparison)
                                     if ($password == $stored_password) {
-                                        $_SESSION['admin'] = $fetch_user;
+                                        $_SESSION['folio_admin'] = $fetch_user;
 
                                         if (isset($_POST['remember_me'])) {
                                             setcookie('email', $email, time() + (86400 * 30), "/", "", true, true); // Secure flag and HttpOnly flag
                                             setcookie('password', $stored_password, time() + (86400 * 30), "/", "", true, true); // Secure flag and HttpOnly flag
                                         } else {
-                                            setcookie('username', "", time() - 3600, "/", "", true, true); // Secure flag and HttpOnly flag
+                                            setcookie('email', "", time() - 3600, "/", "", true, true); // Secure flag and HttpOnly flag
                                             setcookie('password', "", time() - 3600, "/", "", true, true); // Secure flag and HttpOnly flag
                                         }
 
@@ -114,7 +103,6 @@ include("../connection.php");
 <!-- <script src="../assets/bootstrap/js/bootstrap.min.js"></script> -->
 <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="index.js"></script>
 
 </html>
 <?php ob_end_flush(); ?>

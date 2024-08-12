@@ -1,12 +1,12 @@
-<?php 
+<?php
 include("../connection.php");
-$cid = $_POST['cid'];
-$query = mysqli_query($connection,"SELECT * FROM tbl_course WHERE course_id=$cid");
-    $result ="";
-    foreach($query as $row){
-        $result .= " <input type='hidden' name='cid' id='courseID' value='$row[course_id]'/>
-        <input type='text' name='courseName' id='UpdCName' placeholder='course name' class='form-control' value='$row[course_name]' required>";
-        echo $result;
-    };
-
+$id = $_POST['edit_course_id'];
+$course = $_POST['edit_course'];
+$technology = $_POST['edit_technology'];
+$update_query = mysqli_query($connection, "UPDATE tbl_course SET course_name='$course',technology_id='$technology' WHERE course_id = '$id'");
+if ($update_query) {
+    echo "Course Updated Successfully";
+} else {
+    echo "Course Update Failed";
+}
 ?>

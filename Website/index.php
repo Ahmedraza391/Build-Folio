@@ -1,10 +1,12 @@
 <?php include("../connection.php"); ?>
 <?php
+session_start();
 $page = "home";
+$_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
 ?>
-<title>Buil Folio - Home</title>
+<title>Build Folio - Home</title>
 <?php include("top.php"); ?>
-<!-- Hero Section -->
+
 <section id="hero" class="hero section dark-background">
 
     <div class="container">
@@ -12,10 +14,18 @@ $page = "home";
             <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                 <h1>Better Environment For Students</h1>
                 <p>We are Team of Talented Programmers & Developers in Making Websites & Softwares.</p>
-                <div class="d-flex">
-                    <a href="user_register.php" class="btn-get-started">Get Started</a>
-
-                </div>
+                <?php
+                    if(!isset($_SESSION['user_login'])){
+                        echo "<div class='d-flex'>
+                            <a href='user_register.php' class='btn-get-started'>Get Started</a>
+                        </div>";
+                    }else{
+                        echo "<div class='d-flex'>
+                            <a href='projects.php' class='btn-get-started'>View Projects</a>
+                        </div>";
+                    }
+                ?>
+                
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
                 <img src="assets/img/svgs/[removal.ai]_e9dd2db8-58a8-4a95-8d51-08b563993e8b-man-is-working-laptop-with-word-data-it_1013341-201504.png" class="img-fluid animated" alt="">
@@ -23,92 +33,89 @@ $page = "home";
         </div>
     </div>
 
-</section><!-- /Hero Section -->
+</section>
 
-<!-- Services Section -->
+<!-- Technology Section -->
 <section id="services" class="services section light-background">
-    <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2>Technologies</h2>
-    </div><!-- End Section Title -->
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <!-- Swiper -->
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-html5 fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">Html</a></h4>
+                                <h4 class="fs-3">Html</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-css3 fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">CSS</a></h4>
+                                <h4 class="fs-3">CSS</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-bootstrap fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">Bootstrap</a></h4>
+                                <h4 class="fs-3">Bootstrap</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-js fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">JavaScript</a></h4>
+                                <h4 class="fs-3">JavaScript</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-react fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">React</a></h4>
+                                <h4 class="fs-3">React</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-angular fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">Angular</a></h4>
+                                <h4 class="fs-3">Angular</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-github fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">Github</a></h4>
+                                <h4 class="fs-3">Github</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fab fa-php fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">Php</a></h4>
+                                <h4 class="fs-3">Php</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fas fa-database fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link">MySql</a></h4>
+                                <h4 class="fs-3">MySql</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon">
                                     <i class="devicon-devicon-plain mx-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-50"  viewBox="0 0 128 128">
-                                        <path fill="#9B4F96" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z" />
-                                        <path fill="#68217A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z" />
-                                        <path fill="#fff" d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6zM97 66.2l.9-4.3h-4.2v-4.7h5.1L100 51h4.9l-1.2 6.1h3.8l1.2-6.1h4.8l-1.2 6.1h2.4v4.7h-3.3l-.9 4.3h4.2v4.7h-5.1l-1.2 6h-4.9l1.2-6h-3.8l-1.2 6h-4.8l1.2-6h-2.4v-4.7H97zm4.8 0h3.8l.9-4.3h-3.8l-.9 4.3z" />
-                                    </svg>
-                                </i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-50" viewBox="0 0 128 128">
+                                            <path fill="#9B4F96" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z" />
+                                            <path fill="#68217A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z" />
+                                            <path fill="#fff" d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6zM97 66.2l.9-4.3h-4.2v-4.7h5.1L100 51h4.9l-1.2 6.1h3.8l1.2-6.1h4.8l-1.2 6.1h2.4v4.7h-3.3l-.9 4.3h4.2v4.7h-5.1l-1.2 6h-4.9l1.2-6h-3.8l-1.2 6h-4.8l1.2-6h-2.4v-4.7H97zm4.8 0h3.8l.9-4.3h-3.8l-.9 4.3z" />
+                                        </svg>
+                                    </i>
                                 </div>
-                                <h4><a href="" class="stretched-link fs-3"></a></h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="service-item d-flex align-items-center justify-content-center">
                                 <div class="icon"><i class="fas fa-database fs-1 mx-2"></i></div>
-                                <h4><a href="" class="stretched-link fs-3">Sql</a></h4>
+                                <h4 class="fs-3">Sql</h4>
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -123,7 +130,6 @@ $page = "home";
                                         </svg>
                                     </i>
                                 </div>
-                                <h4><a href="" class="stretched-link fs-3"></a></h4>
                             </div>
                         </div>
                     </div>
@@ -132,147 +138,152 @@ $page = "home";
             </div>
         </div>
     </div>
-</section><!-- /Services Section -->
+</section>>
 
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+<!-- Projects Section -->
+<section id="projects" class="projects section">
+    <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
-      </div><!-- End Section Title -->
+    </div>
 
-      <div class="container">
+    <div class="container">
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <!-- Projects Filters -->
+        <?php
+        // Fetch up to 3 projects for filters
+        $query = mysqli_query($connection, "SELECT * FROM tbl_projects WHERE project_status='activate' AND disabled_status='enabled' ORDER BY project_id DESC LIMIT 3");
+        $projects = [];
+        if (mysqli_num_rows($query) > 0) {
+            echo '<ul class="projects-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">';
+            echo '<li data-filter="*" class="filter-active">All</li>';
+            // Store fetched projects for later use
+            foreach ($query as $data) {
+                $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $data['project_title']);
+                $projects[] = $data;
+                echo "<li data-filter='.filter-$title'>$data[project_title]</li>";
+            }
+            echo '</ul>';
+        }
+        ?>
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <?php 
-                $query = mysqli_query($connection,"SELECT * FROM tbl_course");
-                if(mysqli_num_rows($query)>0){
-                    foreach($query as $c_name){
-                        echo "<li data-filter='.filter-$c_name[course_name]'>$c_name[course_name]</li>";
-                    }
-                }
-            ?>
-            <!-- <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Card</li>
-            <li data-filter=".filter-branding">Web</li> -->
-          </ul><!-- End Portfolio Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+        <!-- Projects Items -->
+        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             <?php
-                $fetch_qurey = mysqli_query($connection,"SELECT * FROM tbl_lectures");
-                if(mysqli_num_rows($fetch_qurey)>0){
-                    echo "<div class=;col-lg-4 col-md-6 portfolio-item isotope-item filter-app;>";
-                        echo "<img src='assets/img/masonry-portfolio/masonry-portfolio-1.jpg' class='img-fluid' alt='>";
-                        echo "<div class='portfolio-info'>";
-                            echo "<h4>App 1</h4>";
-                            echo "<p>Lorem ipsum, dolor sit</p>";
-                            echo "<a href='video_details.php' title='More Details' class='details-link'><i class='bi bi-link-45deg'></i></a>";
+            // Display only the fetched projects
+            if (count($projects) > 0) {
+                $count = 1;
+                foreach ($projects as $data) {
+                    $project_desc = strlen($data['project_desc']) > 30 ? substr($data['project_desc'], 0, 30) . '...' : $data['project_desc'];
+                    $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $data['project_title']);
+                    echo "<div class='col-lg-4 col-md-6 projects-item isotope-item filter-$title'>";
+                    echo "<img src='../admin/$data[project_thumbnail]' class='img-fluid' alt='Thumbnail'>";
+                    echo "<div class='projects-info'>";
+                    echo "<h4>$data[project_title]</h4>";
+                    echo "<p class='project_length_exceed'>$project_desc</p>";
+                    echo "<button title='More Details' data-bs-toggle='modal' data-bs-target='#$title-$count' class='details-link btn border-primary ms-2'><i class='bi bi-link-45deg'></i></button>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<div class='modal fade' id='$title-$count' tabindex='-1' aria-labelledby='$title-$count-Label' aria-hidden='true'>";
+                        echo "<div class='modal-dialog modal-lg'>";
+                            echo "<div class='modal-content'>";
+                                echo "<div class='modal-header'>";
+                                    echo "<h1 class='modal-title fs-5' id='$title-$count-Label'>$data[project_title]</h1>";
+                                    echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+                                echo "</div>";
+                                echo "<div class='modal-body'>";
+                                    echo "<div class='card p-3'>";
+                                        echo "<video id='project_video_thumbnail' poster='../admin/$data[project_thumbnail]' height='500px' width='100%' controls>";
+                                            echo "<source src='../admin/$data[project_video]' id='view_video' type='video/mp4'>";
+                                        echo "</video>";
+                                        echo "<div class='mt-3'>";
+                                        echo "<h6 class='text-dark'>Project Title: <span class='text-primary'>$data[project_title]</span></h6>";
+                                        echo "<h6 class='text-dark'>Project Description: <span class='text-primary'>$data[project_desc]</span></h6>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                                echo "<div class='modal-footer'>";
+                                    echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
+                                echo "</div>";
+                            echo "</div>";
                         echo "</div>";
                     echo "</div>";
+                    $count++;
                 }
+            }
             ?>
-            <!-- continue on after thumbnail  -->
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
-
         </div>
 
+    </div>
+</div>
+
+</section>
+
+<!-- Team Section -->
+<section id="team" class="team section">
+
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2>Our Team</h2>
+</div><!-- End Section Title -->
+
+<div class="container">
+
+  <div class="row gy-4">
+
+    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="team-member">
+        <div class="pic mb-3"><img src="assets/img/team/ahmed.jpeg" class="img-fluid" alt=""></div>
+        <div class="member-info">
+          <h4>Ahmed Raza</h4>
+          <span>Full-Stack Developer</span>
+          <p class="text-center">Intermediate In Making Dynamic Websites.</p>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""> <i class="bi bi-linkedin"></i> </a>
+          </div>
+        </div>
       </div>
+    </div><!-- End Team Member -->
+    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="team-member">
+        <div class="pic mb-3"><img src="assets/img/team/hassan.jpg" class="img-fluid" alt=""></div>
+        <div class="member-info">
+          <h4>Muhammad Hassan</h4>
+          <span>Backend Developer</span>
+          <p class="text-center">Intermediate In Making Dynamic Backends.</p>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""> <i class="bi bi-linkedin"></i> </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Team Member -->
+    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="team-member">
+        <div class="pic mb-3"><img src="assets/img/team/taha.jpg" class="img-fluid" alt=""></div>
+        <div class="member-info">
+          <h4>Syed Muhammad Taha</h4>
+          <span>Software Engineer</span>
+          <p class="text-center">Intermediate In Making All Type Of Softwares.</p>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""> <i class="bi bi-linkedin"></i> </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Team Member -->
 
-    </section><!-- /Portfolio Section -->
+  </div>
 
+</div>
+
+</section><!-- /Team Section -->
 <?php include("bottom.php"); ?>
