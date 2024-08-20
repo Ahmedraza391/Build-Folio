@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg top-navbar navbar-light py-2 px-4 position-fixed w-100">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <a class="navbar-brand text-white fw-bold fs-3" href="./index.php">Build Folio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="header-toggler btn border-white" type="button" id="header_toggler">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="d-flex align-items-center justify-center-end ms-auto">
+            <ul class="navbar-nav ">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle fs-3 text-white"></i>
@@ -16,6 +16,6 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+        </div>  
     </div>
 </nav>

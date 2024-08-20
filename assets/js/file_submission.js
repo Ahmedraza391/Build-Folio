@@ -611,4 +611,12 @@ $(document).ready(function () {
         fetch_project();
     }
     project_mangement();
+
+    $("#header_toggler").on("click", function() {
+        $("#header").toggleClass("active");
+    });
+    $("#mainContent").on("click", function() {
+        $("#header").removeClass("active");
+    });
+    
 });

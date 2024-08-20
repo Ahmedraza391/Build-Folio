@@ -51,7 +51,7 @@ if ($row = mysqli_fetch_assoc($query)) {
 }
 ?>
 
-<section class="mainRight container">
+<section class="container mt-5">
     <div class="content row gap-1 justify-content-center">
         <div class="card p-3 col-md-12 shadow mb-5 rounded">
             <script>

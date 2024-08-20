@@ -1,15 +1,13 @@
 <?php 
-
-
 include("./components/top.php");
 if (!isset($_SESSION['folio_admin'])) {
-    header('Location: admin_login.php'); // Redirect before any output
+    echo "<script>window.location.href = 'admin_login.php'<script>";
     exit();
 }
-$message = "";
-$class = "";
 
 if (isset($_POST['btn_update'])) {
+    $message = "";
+    $class = "";
     $admin_id = $_POST['admin_id'];
     $admin_name = $_POST['admin_name'];
     $admin_email = $_POST['admin_email'];

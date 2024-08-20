@@ -1,3 +1,4 @@
+</main>
 </body>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/file_submission.js"></script>

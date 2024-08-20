@@ -8,8 +8,8 @@ if (!isset($_SESSION['folio_admin'])) {
     echo "<script>window.location.href='admin_login.php'</script>";
 }
 ?>
-<section class="mainRight container">
-    <div class="content row gap-1 justify-content-center">
+<section class="container mt-5">
+    <div class="content row justify-content-center">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card p-3 shadow">

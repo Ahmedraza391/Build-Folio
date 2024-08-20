@@ -2,4 +2,4 @@ validate user page images add form and edit form
 
 in small screens the sidebar hides set this 
 
-continue on lectures
+continue on WEbsite lectures

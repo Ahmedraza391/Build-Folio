@@ -15,17 +15,17 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
                 <h1>Better Environment For Students</h1>
                 <p>We are Team of Talented Programmers & Developers in Making Websites & Softwares.</p>
                 <?php
-                    if(!isset($_SESSION['user_login'])){
-                        echo "<div class='d-flex'>
+                if (!isset($_SESSION['user_login'])) {
+                    echo "<div class='d-flex'>
                             <a href='user_register.php' class='btn-get-started'>Get Started</a>
                         </div>";
-                    }else{
-                        echo "<div class='d-flex'>
+                } else {
+                    echo "<div class='d-flex'>
                             <a href='projects.php' class='btn-get-started'>View Projects</a>
                         </div>";
-                    }
+                }
                 ?>
-                
+
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
                 <img src="assets/img/svgs/[removal.ai]_e9dd2db8-58a8-4a95-8d51-08b563993e8b-man-is-working-laptop-with-word-data-it_1013341-201504.png" class="img-fluid animated" alt="">
@@ -138,7 +138,7 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
             </div>
         </div>
     </div>
-</section>>
+</section>
 
 
 <!-- Projects Section -->
@@ -148,142 +148,144 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
     </div>
 
     <div class="container">
-    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-        <!-- Projects Filters -->
-        <?php
-        // Fetch up to 3 projects for filters
-        $query = mysqli_query($connection, "SELECT * FROM tbl_projects WHERE project_status='activate' AND disabled_status='enabled' ORDER BY project_id DESC LIMIT 3");
-        $projects = [];
-        if (mysqli_num_rows($query) > 0) {
-            echo '<ul class="projects-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">';
-            echo '<li data-filter="*" class="filter-active">All</li>';
-            // Store fetched projects for later use
-            foreach ($query as $data) {
-                $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $data['project_title']);
-                $projects[] = $data;
-                echo "<li data-filter='.filter-$title'>$data[project_title]</li>";
-            }
-            echo '</ul>';
-        }
-        ?>
-
-        <!-- Projects Items -->
-        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <!-- Projects Filters -->
             <?php
-            // Display only the fetched projects
-            if (count($projects) > 0) {
-                $count = 1;
-                foreach ($projects as $data) {
-                    $project_desc = strlen($data['project_desc']) > 30 ? substr($data['project_desc'], 0, 30) . '...' : $data['project_desc'];
+            // Fetch up to 3 projects for filters
+            $query = mysqli_query($connection, "SELECT * FROM tbl_projects WHERE project_status='activate' AND disabled_status='enabled' ORDER BY project_id DESC LIMIT 3");
+            $projects = [];
+            if (mysqli_num_rows($query) > 0) {
+                echo '<ul class="projects-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">';
+                echo '<li data-filter="*" class="filter-active">All</li>';
+                // Store fetched projects for later use
+                foreach ($query as $data) {
                     $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $data['project_title']);
-                    echo "<div class='col-lg-4 col-md-6 projects-item isotope-item filter-$title'>";
-                    echo "<img src='../admin/$data[project_thumbnail]' class='img-fluid' alt='Thumbnail'>";
-                    echo "<div class='projects-info'>";
-                    echo "<h4>$data[project_title]</h4>";
-                    echo "<p class='project_length_exceed'>$project_desc</p>";
-                    echo "<button title='More Details' data-bs-toggle='modal' data-bs-target='#$title-$count' class='details-link btn border-primary ms-2'><i class='bi bi-link-45deg'></i></button>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<div class='modal fade' id='$title-$count' tabindex='-1' aria-labelledby='$title-$count-Label' aria-hidden='true'>";
-                        echo "<div class='modal-dialog modal-lg'>";
-                            echo "<div class='modal-content'>";
-                                echo "<div class='modal-header'>";
-                                    echo "<h1 class='modal-title fs-5' id='$title-$count-Label'>$data[project_title]</h1>";
-                                    echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
-                                echo "</div>";
-                                echo "<div class='modal-body'>";
-                                    echo "<div class='card p-3'>";
-                                        echo "<video id='project_video_thumbnail' poster='../admin/$data[project_thumbnail]' height='500px' width='100%' controls>";
-                                            echo "<source src='../admin/$data[project_video]' id='view_video' type='video/mp4'>";
-                                        echo "</video>";
-                                        echo "<div class='mt-3'>";
-                                        echo "<h6 class='text-dark'>Project Title: <span class='text-primary'>$data[project_title]</span></h6>";
-                                        echo "<h6 class='text-dark'>Project Description: <span class='text-primary'>$data[project_desc]</span></h6>";
-                                        echo "</div>";
-                                    echo "</div>";
-                                echo "</div>";
-                                echo "<div class='modal-footer'>";
-                                    echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
-                                echo "</div>";
-                            echo "</div>";
-                        echo "</div>";
-                    echo "</div>";
-                    $count++;
+                    $projects[] = $data;
+                    echo "<li data-filter='.filter-$title'>$data[project_title]</li>";
                 }
+                echo '</ul>';
             }
             ?>
-        </div>
 
+            <!-- Projects Items -->
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                <?php
+                // Display only the fetched projects
+                if (count($projects) > 0) {
+                    $count = 1;
+                    foreach ($projects as $data) {
+                        $project_desc = strlen($data['project_desc']) > 30 ? substr($data['project_desc'], 0, 30) . '...' : $data['project_desc'];
+                        $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $data['project_title']);
+                        echo "<div class='col-lg-4 col-md-6 projects-item isotope-item filter-$title'>";
+                        echo "<img src='../admin/$data[project_thumbnail]' class='img-fluid' alt='Thumbnail'>";
+                        echo "<div class='projects-info'>";
+                        echo "<h4>$data[project_title]</h4>";
+                        echo "<p class='project_length_exceed'>$project_desc</p>";
+                        echo "<button title='More Details' data-bs-toggle='modal' data-bs-target='#$title-$count' class='details-link btn border-primary ms-2'><i class='bi bi-link-45deg'></i></button>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "<div class='modal fade' id='$title-$count' tabindex='-1' aria-labelledby='$title-$count-Label' aria-hidden='true'>";
+                        echo "<div class='modal-dialog modal-lg'>";
+                        echo "<div class='modal-content'>";
+                        echo "<div class='modal-header'>";
+                        echo "<h1 class='modal-title fs-5' id='$title-$count-Label'>$data[project_title]</h1>";
+                        echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+                        echo "</div>";
+                        echo "<div class='modal-body'>";
+                        echo "<div class='card p-3'>";
+                        echo "<video id='project_video_thumbnail' poster='../admin/$data[project_thumbnail]' height='500px' width='100%' controls>";
+                        echo "<source src='../admin/$data[project_video]' id='view_video' type='video/mp4'>";
+                        echo "</video>";
+                        echo "<div class='mt-3'>";
+                        echo "<h6 class='text-dark'>Project Title: <span class='text-primary'>$data[project_title]</span></h6>";
+                        echo "<h6 class='text-dark'>Project Description: <span class='text-primary'>$data[project_desc]</span></h6>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "<div class='modal-footer'>";
+                        echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        $count++;
+                    }
+                }
+                ?>
+            </div>
+
+        </div>
     </div>
-</div>
 
 </section>
 
 <!-- Team Section -->
 <section id="team" class="team section">
 
-<!-- Section Title -->
-<div class="container section-title" data-aos="fade-up">
-  <h2>Our Team</h2>
-</div><!-- End Section Title -->
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Our Team</h2>
+    </div><!-- End Section Title -->
 
-<div class="container">
+    <div class="container">
 
-  <div class="row gy-4">
+        <div class="row gy-4">
 
-    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-      <div class="team-member">
-        <div class="pic mb-3"><img src="assets/img/team/ahmed.jpeg" class="img-fluid" alt=""></div>
-        <div class="member-info">
-          <h4>Ahmed Raza</h4>
-          <span>Full-Stack Developer</span>
-          <p class="text-center">Intermediate In Making Dynamic Websites.</p>
-          <div class="social">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""> <i class="bi bi-linkedin"></i> </a>
-          </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member">
+                    <div class="pic mb-3"><img src="assets/img/team/ahmed.jpeg" class="img-fluid" alt=""></div>
+                    <div class="member-info">
+                        <h4>Ahmed Raza</h4>
+                        <span>Full-Stack Developer</span>
+                        <p class="text-center">Intermediate In Making Dynamic Websites.</p>
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter-x"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""> <i class="bi bi-linkedin"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member">
+                    <div class="pic mb-3"><img src="assets/img/team/hassan.jpg" class="img-fluid" alt=""></div>
+                    <div class="member-info">
+                        <h4>Muhammad Hassan</h4>
+                        <span>Backend Developer</span>
+                        <p class="text-center">Intermediate In Making Dynamic Backends.</p>
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter-x"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""> <i class="bi bi-linkedin"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member">
+                    <div class="pic mb-3"><img src="assets/img/team/taha.jpg" class="img-fluid" alt=""></div>
+                    <div class="member-info">
+                        <h4>Syed Muhammad Taha</h4>
+                        <span>Software Engineer</span>
+                        <p class="text-center">Intermediate In Making All Type Of Softwares.</p>
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter-x"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""> <i class="bi bi-linkedin"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
+
         </div>
-      </div>
-    </div><!-- End Team Member -->
-    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-      <div class="team-member">
-        <div class="pic mb-3"><img src="assets/img/team/hassan.jpg" class="img-fluid" alt=""></div>
-        <div class="member-info">
-          <h4>Muhammad Hassan</h4>
-          <span>Backend Developer</span>
-          <p class="text-center">Intermediate In Making Dynamic Backends.</p>
-          <div class="social">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""> <i class="bi bi-linkedin"></i> </a>
-          </div>
-        </div>
-      </div>
-    </div><!-- End Team Member -->
-    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-      <div class="team-member">
-        <div class="pic mb-3"><img src="assets/img/team/taha.jpg" class="img-fluid" alt=""></div>
-        <div class="member-info">
-          <h4>Syed Muhammad Taha</h4>
-          <span>Software Engineer</span>
-          <p class="text-center">Intermediate In Making All Type Of Softwares.</p>
-          <div class="social">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""> <i class="bi bi-linkedin"></i> </a>
-          </div>
-        </div>
-      </div>
-    </div><!-- End Team Member -->
 
-  </div>
-
-</div>
+    </div>
 
 </section><!-- /Team Section -->
+
+
 <?php include("bottom.php"); ?>

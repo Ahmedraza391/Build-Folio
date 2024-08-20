@@ -64,7 +64,7 @@ h6 {
 #header {
   position: fixed;
   top: 60px;
-  left: 0;
+  left: -300px;
   bottom: 0;
   width: 20%;
   transition: all ease-in-out 0.5s;
@@ -74,7 +74,9 @@ h6 {
   background: #040b14;
   overflow-y: auto;
 }
-
+#header.active{
+  left: 0px !important;
+}
 #header .sidebar_navlink.active {
   color: #2eafec;
 }
@@ -134,10 +136,13 @@ h6 {
 }
 
 @media (max-width: 1199px) {
-  #header {
+  #header{
     left: -300px;
   }
-
+  #header.active{
+    width: 200px !important;
+    left: 0px;
+  }
   #main {
     margin-left: 0;
   }
@@ -155,16 +160,13 @@ h6 {
 .top-navbar {
   background-color: #95d7f5 !important;
   z-index: 99;
+  top: 0;
 }
 
-@media (min-width: 992px) {
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
-    position: absolute;
-    right: -30px !important;
-    left: unset !important;
-  }
+.dropdown-menu{
+  position: absolute !important;
+  left: -50px !important;
 }
-
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -1120,6 +1122,7 @@ section {
 /*--------------------------------------------------------------
 # My CSS
 --------------------------------------------------------------*/
+
 .custom-card {
   border: none;
   border-radius: 15px;
@@ -1193,13 +1196,6 @@ section {
 
 
 /* Custom Styling */
-.mainRight {
-  width: 80% !important;
-  position: absolute !important;
-  right: 0 !important;
-  top: 50px !important;
-}
-
 .header {
   width: 80% !important;
   position: fixed !important;
@@ -1220,10 +1216,6 @@ section {
 
 @media (max-width: 1199px) {
   .header {
-    width: 100% !important;
-  }
-
-  .mainRight {
     width: 100% !important;
   }
 }
