@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
         $output .= "</tr>";
     }
 } else {
-    $output .= "<tr><td colspan='4'>Course Not Found</td></tr>";
+    $output .= "<tr><td colspan='6'>Course Not Found</td></tr>";
 }
 
 echo $output;

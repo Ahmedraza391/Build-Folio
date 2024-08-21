@@ -20,7 +20,7 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
                             <a href='user_register.php' class='btn-get-started'>Get Started</a>
                         </div>";
                 } else {
-                    echo "<div class='d-flex'>
+                    echo "<div class='d-flex'>  
                             <a href='projects.php' class='btn-get-started'>View Projects</a>
                         </div>";
                 }
@@ -177,8 +177,8 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
                     foreach ($projects as $data) {
                         $project_desc = strlen($data['project_desc']) > 30 ? substr($data['project_desc'], 0, 30) . '...' : $data['project_desc'];
                         $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $data['project_title']);
-                        echo "<div class='col-lg-4 col-md-6 projects-item isotope-item filter-$title'>";
-                        echo "<img src='../admin/$data[project_thumbnail]' class='img-fluid' alt='Thumbnail'>";
+                        echo "<div class='col-lg-4 col-md-6 projects-item isotope-item  filter-$title'>";
+                        echo "<img src='../admin/$data[project_thumbnail]' class='img-fluid w-100 shadow rounded' alt='Thumbnail'>";
                         echo "<div class='projects-info'>";
                         echo "<h4>$data[project_title]</h4>";
                         echo "<p class='project_length_exceed'>$project_desc</p>";

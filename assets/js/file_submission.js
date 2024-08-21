@@ -24,6 +24,7 @@ $(document).ready(function () {
                     console.log(response);
                     fetch_technology();
                     $("#add_technology").modal("hide");
+                    $('#technology_form')[0].reset();
                     alert(response);
                 }
             })
@@ -48,6 +49,7 @@ $(document).ready(function () {
                     console.log(response);
                     fetch_technology();
                     $("#edit_technology_modal").modal("hide");
+                    $('#edit_technology_form')[0].reset();
                     alert(response);
                 }
             })
