@@ -2100,3 +2100,48 @@ section,
   border-radius: 20px !important;
 }
 /* For Login User Section */
+
+/* custom css */
+.hovered_images_box{
+  overflow: hidden;
+}
+.hovered_images{
+  transition: .3s ease-in-out;
+}
+.hovered_images:hover{
+  transform: scale(1.1);
+}
+.stylish_heading{
+  position: relative;
+}
+.stylish_heading::after{
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #193a72;
+  width: 70%;
+  height: 4px;
+}
+.outer_section{
+  position: relative;
+}
+.blur_detail_background{
+  background-color: #ffffff50;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+.bg-skyblue{
+  background-color: #47b2e4;
+}
+/* custom css */

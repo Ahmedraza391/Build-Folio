@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2024 at 09:51 PM
+-- Generation Time: Aug 22, 2024 at 07:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -193,10 +193,11 @@ CREATE TABLE `tbl_lectures` (
 --
 
 INSERT INTO `tbl_lectures` (`id`, `video`, `video_thumbnail`, `lecture_title`, `lecture_description`, `course_id`, `status`, `disabled_status`) VALUES
-(1, './uploads/CSS_In_One_Video/videos/Admin - Panel Management - Google Chrome 2024-07-14 02-24-35.mp4', './uploads/CSS_In_One_Video/thumbnails/Screenshot 2024-02-16 144011.png', 'Introductio To CSS | Backend CSS.', 'In This Course You Learn CSS.', 4, 'activate', 'enabled'),
+(1, './uploads/CSS_In_One_Video/videos/Admin - Panel Management - Google Chrome 2024-07-14 02-24-35.mp4', './uploads/CSS_In_One_Video/thumbnails/Screenshot 2024-02-16 144011.png', 'Introduction To CSS | Backend CSS.', 'In This Course You Learn CSS.', 4, 'activate', 'enabled'),
 (2, './uploads/Backend_Full_Course/videos/file-uploading-2 - Microsoft Visual Studio 2024-08-07 14-57-29.mp4', './uploads/Backend_Full_Course/thumbnails/clark-tibbs-oqStl2L5oxI-unsplash.jpg', 'Introductio To Backend | Backend Course.', 'In This Course You Learn Backend Technologies & Making Different Websites Backend.', 3, 'activate', 'enabled'),
 (3, './uploads/Html_In_One_Video/videos/Admin - Panel Management - Google Chrome 2024-07-14 02-24-35.mp4', './uploads/Html_In_One_Video/thumbnails/felicia-buitenwerf-_z1fydm6azE-unsplash.jpg', 'Introduction To Html | Html Course Lecture 1', 'In This Course You Learn Html.', 5, 'activate', 'enabled'),
-(4, './uploads/lectures/React_Full_Course/videos/file-uploading-2 - Microsoft Visual Studio 2024-08-07 14-57-29.mp4', './uploads/lectures/React_Full_Course/thumbnails/prateek-katyal-6jYnKXVxOjc-unsplash.jpg', 'Introduction To React | React Full Course.', 'In This Lecture You Understand What is React.', 6, 'activate', 'enabled');
+(4, './uploads/lectures/React_Full_Course/videos/file-uploading-2 - Microsoft Visual Studio 2024-08-07 14-57-29.mp4', './uploads/lectures/React_Full_Course/thumbnails/prateek-katyal-6jYnKXVxOjc-unsplash.jpg', 'Introduction To React | React Full Course.', 'In This Lecture You Understand What is React.', 6, 'activate', 'enabled'),
+(5, './uploads/lectures/CSS_In_One_Video/videos/32767-394004551_small.mp4', './uploads/lectures/CSS_In_One_Video/thumbnails/pankaj-patel-Fi-GJaLRGKc-unsplash.jpg', 'Selectors In CSS | CSS Full Course | Lecture 2 .', 'In This Lecture You Learn How To Access Elements With Selectors in CSS.', 4, 'activate', 'enabled');
 
 -- --------------------------------------------------------
 
@@ -269,7 +270,7 @@ CREATE TABLE `tbl_users` (
 INSERT INTO `tbl_users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_image`, `user_status`, `disabled_status`) VALUES
 (1, 'Ahmed Raza Jutt', 'ahmedjutt@gmail.com', 'ahmed123', '../Admin/uploads/users/ahmedjutt@gmail.com/my pic 2.jpg', 'activate', 'enabled'),
 (2, 'Muhmmad Minhal Khan', 'minhalkhan@gmail.com', 'minhalkhan123', '../Admin/uploads/users/minhal@gmail.com/my pic on eid.png', 'activate', 'enabled'),
-(3, 'Fahad Khan', 'fahad@gmail.com', 'fahad123', '../Admin/uploads/users/fahad@gmail.com/my pic.jpg', 'activate', 'enabled');
+(3, 'Fahad Khan', 'fahadkhan@gmail.com', 'fahad123', '../Admin/uploads/users/fahadkhan@gmail.com/133811726.jpeg', 'deactivate', 'enabled');
 
 --
 -- Indexes for dumped tables
@@ -343,7 +344,7 @@ ALTER TABLE `tbl_course`
 -- AUTO_INCREMENT for table `tbl_lectures`
 --
 ALTER TABLE `tbl_lectures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_projects`

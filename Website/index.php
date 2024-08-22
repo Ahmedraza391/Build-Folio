@@ -21,7 +21,7 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
                         </div>";
                 } else {
                     echo "<div class='d-flex'>  
-                            <a href='projects.php' class='btn-get-started'>View Projects</a>
+                            <a href='projects.php' class='btn-get-started'>Check Now</a>
                         </div>";
                 }
                 ?>
@@ -286,6 +286,5 @@ $_SESSION['page_url'] = $_SERVER['REQUEST_URI'];
     </div>
 
 </section><!-- /Team Section -->
-
 
 <?php include("bottom.php"); ?>

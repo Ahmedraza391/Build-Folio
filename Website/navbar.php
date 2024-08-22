@@ -13,7 +13,8 @@
           <li><a href="about.php" class="<?php if($page == "about"){echo "active";} ?>">About</a></li>
           <li><a href="projects.php" class="<?php if($page == "project"){echo "active";} ?>">Projects</a></li>
           <li><a href="lectures.php" class="<?php if($page == "lectures"){echo "active";} ?>">Lectures</a></li>
-          <li><a href="#contact" class="<?php if($page == "contact"){echo "active";} ?>">Contact</a></li>
+          <li><a href="courses.php" class="<?php if($page == "course"){echo "active";} ?>">Courses</a></li>
+          <li><a href="contact.php" class="<?php if($page == "contact"){echo "active";} ?>">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

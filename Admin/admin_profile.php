@@ -29,8 +29,8 @@ if (isset($_POST['btn_update'])) {
 ?>
 
 <title>Build Folio - Admin Profile</title>
-<section class="mainRight container">
-    <div class="content row gap-1 justify-content-center">
+<section class="container mt-5">
+    <div class="content row justify-content-center">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card p-3 shadow">
